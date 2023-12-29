@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      host: localhost
+      port: 27017
+      database: sharework_chat
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASS}
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
