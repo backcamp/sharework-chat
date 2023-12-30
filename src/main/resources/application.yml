@@ -8,3 +8,10 @@ spring:
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASS}
       field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+management:
+  endpoints:
+    web:
+      exposure:
+        include: loggers
+websocket:
+  broker-prefix: /queue

@@ -10,10 +10,12 @@ import com.example.shareworkchat.domain.chat.repository.ChatMessageRepository;
 import com.example.shareworkchat.domain.chat.repository.ChatRoomRepository;
 import java.util.Date;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ChatService {
 
     private final ChatRoomRepository chatRoomRepository;
@@ -26,6 +28,7 @@ public class ChatService {
     }
 
     public Response sendChatMessage(ChatMessageRequest chatMessageRequest) {
+        log.debug("{} - {}: {}", chatMessageRequest.getRoomId(), chatMessageRequest.getSenderId(), chatMessageRequest.getContent());
         ChatMessage message = new ChatMessage(chatMessageRequest.getRoomId(), chatMessageRequest.getSenderId(), chatMessageRequest.getContent(), new Date());
         chatMessageRepository.save(message);
         return new Response(new BasicMeta(true, "메시지 전송 성공 입니다."));
